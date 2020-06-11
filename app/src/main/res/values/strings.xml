@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Notes App</string>
+    <string name="home">Home</string>
+    <string name="gallery">Gallery</string>
+    <string name="settings">Settings</string>
+    <string name="create_notes_now">Create Notes Now!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save">Save</string>
+    <string name="insert_your_description_here">Insert Your Description Here!</string>
+    <string name="insert_title_here">Insert Title Here!</string>
+    <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
+</resources>
