@@ -6,8 +6,8 @@
         android:title="@string/home"/>
     <item
         android:id="@+id/gallery"
-        android:icon="@drawable/ic_image"
-        android:title="@string/gallery"/>
+        android:icon="@drawable/ic_event_note"
+        android:title="Reminder"/>
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings"

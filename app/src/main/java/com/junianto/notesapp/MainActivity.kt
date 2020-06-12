@@ -8,15 +8,16 @@ import android.view.View
 import android.widget.Toast
 import android.widget.Toolbar
 import androidx.core.os.postDelayed
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.*
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomnavigation.BottomNavigationMenu
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.junianto.notesapp.db.NotesDB
 import com.junianto.notesapp.repository.NotesRepository
 import com.junianto.notesapp.ui.home.HomeViewModel
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFrag.navController
         NavigationUI.setupWithNavController(bottomNavbar, navHostFrag.navController)
 
-        var appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.gallery))
+        var appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.reminderFragment))
         setupActionBarWithNavController(navHostFrag.navController, appBarConfiguration)
     }
 
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        var appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.gallery))
+        var appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.reminderFragment))
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }

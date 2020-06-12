@@ -27,11 +27,6 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/galleryFragment"
-        android:name="com.junianto.notesapp.ui.gallery.GalleryFragment"
-        android:label="fragment_gallery"
-        tools:layout="@layout/fragment_gallery" />
-    <fragment
         android:id="@+id/editFragment"
         android:name="com.junianto.notesapp.ui.edit.EditFragment"
         android:label="Edit Note"
@@ -40,4 +35,9 @@
             android:id="@+id/action_editFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/reminderFragment"
+        android:name="com.junianto.notesapp.ui.reminder.ReminderFragment"
+        android:label="fragment_reminder"
+        tools:layout="@layout/fragment_reminder" />
 </navigation>
