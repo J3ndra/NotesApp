@@ -38,6 +38,6 @@
     <fragment
         android:id="@+id/reminderFragment"
         android:name="com.junianto.notesapp.ui.reminder.ReminderFragment"
-        android:label="fragment_reminder"
+        android:label="Reminder"
         tools:layout="@layout/fragment_reminder" />
 </navigation>
