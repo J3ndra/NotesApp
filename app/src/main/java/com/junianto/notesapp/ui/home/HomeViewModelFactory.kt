@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.junianto.notesapp.repository.NotesRepository
 
 @Suppress("UNCHECKED_CAST")
-class HomeViewModelFactory() : ViewModelProvider.NewInstanceFactory() {
+class HomeViewModelFactory(private val notesRepository: NotesRepository) : ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return HomeViewModel( Application() ) as T
+        return HomeViewModel( notesRepository ) as T
     }
 }

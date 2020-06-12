@@ -4,10 +4,6 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
-import java.util.concurrent.locks.Lock
 
 @Database( entities = [Notes::class], version = 1, exportSchema = false)
 abstract class NotesDB : RoomDatabase() {
@@ -15,34 +11,15 @@ abstract class NotesDB : RoomDatabase() {
 
     companion object{
 
-        @Volatile private var INSTANCE: NotesDB? = null
+        @Volatile
+        var INSTANCE: NotesDB ?= null
+        private val LOCK = Any()
 
-        //if parameter before ?: symbol is not null, return it
-        //otherwise return the right expression
-        fun getInstance(context: Context, scope: CoroutineScope) = INSTANCE ?: synchronized(this){
-            INSTANCE ?: Room.databaseBuilder(
-                context.applicationContext, NotesDB::class.java, "notesdb")
-                .fallbackToDestructiveMigration()
-                .addCallback(NoteDatabaseCallback(scope))
-                .build()
-                .also { INSTANCE = it }
+        operator fun invoke(context: Context) = INSTANCE ?: synchronized(LOCK) {
+            INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
         }
+
+        private fun buildDatabase(context: Context) = Room.databaseBuilder( context.applicationContext, NotesDB::class.java, "NotesDB.db" ).build()
     }
 
-    private class  NoteDatabaseCallback(private val scope: CoroutineScope): RoomDatabase.Callback() {
-        override fun onCreate(db: SupportSQLiteDatabase) {
-            super.onCreate(db)
-            INSTANCE?.let {
-                scope.launch {
-                    populateDatabase(it.notesDAO())
-                }
-            }
-        }
-
-        suspend fun populateDatabase(noteDao: NotesDAO){
-            noteDao.insert(Notes("Sample 1", "This is a sample note"))
-            noteDao.insert(Notes("Sample 2", "This is a sample note"))
-            noteDao.insert(Notes("Sample 3", "This is a sample note"))
-        }
-    }
 }

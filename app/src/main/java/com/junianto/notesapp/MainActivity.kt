@@ -15,16 +15,26 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.junianto.notesapp.db.NotesDB
+import com.junianto.notesapp.repository.NotesRepository
+import com.junianto.notesapp.ui.home.HomeViewModel
+import com.junianto.notesapp.ui.home.HomeViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+    lateinit var homeViewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val notesRepository = NotesRepository(NotesDB.invoke(this))
+        val viewModelProviderFactory = HomeViewModelFactory(notesRepository)
+        homeViewModel = ViewModelProvider(this, viewModelProviderFactory).get(HomeViewModel::class.java)
 
         setupViews()
     }
@@ -56,5 +66,10 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        var appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.gallery))
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }

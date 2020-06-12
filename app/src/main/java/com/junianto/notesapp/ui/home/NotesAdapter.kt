@@ -49,12 +49,14 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
             tvTitle.text = curNotesItem.title
             tvContent.text = curNotesItem.description
             tvId.text = curNotesItem.id.toString()
+            tvTime.text = curNotesItem.timeStamp
         }
 
         holder.itemView.setOnClickListener {
             val args = Bundle()
             args.putString("title", curNotesItem.title)
             args.putString("description", curNotesItem.description)
+            args.putInt("id", curNotesItem.id)
             navController = Navigation.findNavController(it)
             navController.navigate(R.id.action_homeFragment_to_editFragment, args)
         }

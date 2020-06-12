@@ -14,6 +14,8 @@ import com.junianto.notesapp.MainActivity
 import com.junianto.notesapp.R
 import com.junianto.notesapp.db.Notes
 import com.junianto.notesapp.ui.home.HomeViewModel
+import com.junianto.notesapp.utils.getCurrentDate
+import com.junianto.notesapp.utils.hideSoftKeyboard
 import kotlinx.android.synthetic.main.fragment_create.*
 
 class CreateFragment : Fragment(R.layout.fragment_create) {
@@ -23,6 +25,7 @@ class CreateFragment : Fragment(R.layout.fragment_create) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = (activity as MainActivity).homeViewModel
         navController = Navigation.findNavController(view)
 
         val addTitle: EditText = view.findViewById(R.id.noteTitle)
@@ -31,7 +34,8 @@ class CreateFragment : Fragment(R.layout.fragment_create) {
         noteSaveBtn.setOnClickListener {
             val title = addTitle.text.toString()
             val description = addDesc.text.toString()
-            val item = Notes(title, description)
+            val timeStamp = getCurrentDate()
+            val item = Notes(title, description, timeStamp)
 
             if (title.isEmpty() || description.isEmpty()) {
                 Toast.makeText(context, "Please enter all the information", Toast.LENGTH_LONG).show()
@@ -41,6 +45,7 @@ class CreateFragment : Fragment(R.layout.fragment_create) {
                 Log.d("SUCCESS", "Note Created")
                 viewModel.insert(item)
                 navController.navigate(R.id.action_createFragment_to_homeFragment)
+                hideSoftKeyboard(requireActivity(), requireView())
             }
         }
 

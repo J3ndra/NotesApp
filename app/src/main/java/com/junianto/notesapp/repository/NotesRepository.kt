@@ -7,26 +7,12 @@ import com.junianto.notesapp.db.NotesDAO
 import com.junianto.notesapp.db.NotesDB
 import kotlinx.coroutines.CoroutineScope
 
-class NotesRepository (application: Application, scope: CoroutineScope) {
-    private var notesDAO: NotesDAO
-    var listNotes: LiveData<List<Notes>>
-        private set
+class NotesRepository (val database: NotesDB) {
+    suspend fun insert(notes: Notes) = database.notesDAO().insert(notes)
 
-    init {
-        val database: NotesDB = NotesDB.getInstance( application, scope )
-        notesDAO = database.notesDAO()
-        listNotes = notesDAO.getAllNotes()
-    }
+    suspend fun update(notes: Notes) = database.notesDAO().update(notes)
 
-    suspend fun insert(notes: Notes) {
-        notesDAO.insert(notes)
-    }
+    suspend fun delete(notes: Notes) = database.notesDAO().delete(notes)
 
-    suspend fun update(notes: Notes) {
-        notesDAO.update(notes)
-    }
-
-    suspend fun delete(notes: Notes) {
-        notesDAO.delete(notes)
-    }
+    fun getAllNotes() = database.notesDAO().getAllNotes()
 }
