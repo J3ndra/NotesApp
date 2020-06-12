@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/imageView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
@@ -21,12 +20,12 @@
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
-            android:paddingRight="10dp"
             android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:textAlignment="textStart"
-            android:textStyle="bold"
             android:textSize="20sp"
-            card_view:layout_constraintBottom_toTopOf="@id/tvContent"
+            android:textStyle="bold"
+            card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toStartOf="@id/tvId"
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toStartOf="parent"
@@ -34,52 +33,35 @@
             tools:text="J3ndra" />
 
         <TextView
-            android:id="@+id/tvContent"
+            android:id="@+id/textdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
+            android:layout_below="@id/tvId"
+            android:layout_alignParentStart="true"
+            android:text="Date"
             android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:textAlignment="textStart"
-            android:textSize="14sp"
+            android:paddingEnd="10dp"
+            android:fontFamily="@font/montserrat"
+            android:textSize="12sp"
+            android:visibility="visible"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.0"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@id/tvTitle"
-            tools:text="Hello there fellas! I'm a newbie Android Developer sadasdadsad" />
+            card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
             android:fontFamily="@font/montserrat"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
             android:textAlignment="textStart"
-            android:textSize="20sp"
+            android:textSize="14sp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
             android:textStyle="bold"
             card_view:layout_constraintBottom_toTopOf="@+id/tvContent"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintVertical_bias="0.0"
-            tools:text="1" />
+            card_view:layout_constraintTop_toBottomOf="@+id/textdate"
+            tools:text="February, 14 2020" />
 
-        <TextView
-            android:id="@+id/tvTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/montserrat"
-            android:textAlignment="textStart"
-            android:textColor="@color/colorAccentText"
-            android:textSize="10sp"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/tvContent"
-            tools:text="February, 2 June 2020" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>

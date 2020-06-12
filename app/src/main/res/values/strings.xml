@@ -11,4 +11,5 @@
     <string name="insert_title_here">Insert Title Here!</string>
     <string name="cancel">Cancel</string>
     <string name="update">Update</string>
+    <string name="reminder">Reminder</string>
 </resources>

@@ -1,9 +1,8 @@
 package com.junianto.notesapp.ui.home
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.junianto.notesapp.repository.NotesRepository
+import com.junianto.notesapp.repository.notesRepository.NotesRepository
 
 @Suppress("UNCHECKED_CAST")
 class HomeViewModelFactory(private val notesRepository: NotesRepository) : ViewModelProvider.NewInstanceFactory() {

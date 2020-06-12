@@ -3,23 +3,14 @@ package com.junianto.notesapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.view.Menu
-import android.view.View
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.core.os.postDelayed
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
-import com.google.android.material.bottomappbar.BottomAppBar
-import com.google.android.material.bottomnavigation.BottomNavigationMenu
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.junianto.notesapp.db.NotesDB
-import com.junianto.notesapp.repository.NotesRepository
+import com.junianto.notesapp.db.notesDB.NotesDB
+import com.junianto.notesapp.repository.notesRepository.NotesRepository
 import com.junianto.notesapp.ui.home.HomeViewModel
 import com.junianto.notesapp.ui.home.HomeViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
@@ -33,7 +24,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val notesRepository = NotesRepository(NotesDB.invoke(this))
+        val notesRepository =
+            NotesRepository(
+                NotesDB.invoke(this)
+            )
         val viewModelProviderFactory = HomeViewModelFactory(notesRepository)
         homeViewModel = ViewModelProvider(this, viewModelProviderFactory).get(HomeViewModel::class.java)
 

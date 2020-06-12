@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.junianto.notesapp.R
-import com.junianto.notesapp.db.Notes
+import com.junianto.notesapp.db.notesDB.Notes
 import kotlinx.android.synthetic.main.item_note.view.*
 
 class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
@@ -56,7 +56,7 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
             val args = Bundle()
             args.putString("title", curNotesItem.title)
             args.putString("description", curNotesItem.description)
-            args.putInt("id", curNotesItem.id)
+            args.putLong("id", curNotesItem.id)
             navController = Navigation.findNavController(it)
             navController.navigate(R.id.action_homeFragment_to_editFragment, args)
         }
