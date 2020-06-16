@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
-import com.junianto.notesapp.db.notesDB.NotesDB
 import com.junianto.notesapp.repository.notesRepository.NotesRepository
 import com.junianto.notesapp.ui.home.HomeViewModel
 import com.junianto.notesapp.ui.home.HomeViewModelFactory

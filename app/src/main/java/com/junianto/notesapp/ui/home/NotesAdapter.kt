@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.junianto.notesapp.R
-import com.junianto.notesapp.db.notesDB.Notes
+import com.junianto.notesapp.db.notes.Notes
 import kotlinx.android.synthetic.main.item_note.view.*
 
 class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {

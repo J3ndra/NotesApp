@@ -1,7 +1,7 @@
 package com.junianto.notesapp.ui.home
 
 import androidx.lifecycle.*
-import com.junianto.notesapp.db.notesDB.Notes
+import com.junianto.notesapp.db.notes.Notes
 import com.junianto.notesapp.repository.notesRepository.NotesRepository
 import kotlinx.coroutines.*
 

@@ -10,7 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.junianto.notesapp.MainActivity
 import com.junianto.notesapp.R
-import com.junianto.notesapp.db.notesDB.Notes
+import com.junianto.notesapp.db.notes.Notes
 import com.junianto.notesapp.ui.home.HomeViewModel
 import com.junianto.notesapp.utils.getCurrentDate
 import com.junianto.notesapp.utils.hideSoftKeyboard
