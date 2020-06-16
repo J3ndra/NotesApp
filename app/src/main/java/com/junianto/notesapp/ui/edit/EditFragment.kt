@@ -11,9 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.junianto.notesapp.MainActivity
 import com.junianto.notesapp.R
-import com.junianto.notesapp.db.Notes
-import com.junianto.notesapp.db.NotesDAO
-import com.junianto.notesapp.db.NotesDB
+import com.junianto.notesapp.data.Note
 import com.junianto.notesapp.ui.home.HomeViewModel
 import com.junianto.notesapp.utils.getCurrentDate
 import com.junianto.notesapp.utils.hideSoftKeyboard
@@ -47,7 +45,8 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
             val description = editDesc.text.toString()
             val timeStamp = editTime.text.toString()
             val itemId = idargs
-            val item = Notes(title, description, timeStamp)
+            val item =
+                Note(title, description, timeStamp)
 
             if (title.isEmpty() || description.isEmpty()) {
                 Toast.makeText(context, "Please enter all the information", Toast.LENGTH_LONG).show()

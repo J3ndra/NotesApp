@@ -11,4 +11,10 @@
     <string name="insert_title_here">Insert Title Here!</string>
     <string name="cancel">Cancel</string>
     <string name="update">Update</string>
+    <string name="all">All</string>
+    <string name="a_to_z">A to Z</string>
+    <string name="sory_by_id">Sory By ID</string>
+    <string name="filter">Filter</string>
+    <string name="clear_all_notes">Clear All Notes</string>
+    <string name="refresh">Refresh</string>
 </resources>

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.junianto.notesapp.R
-import com.junianto.notesapp.db.Notes
+import com.junianto.notesapp.data.Note
 import kotlinx.android.synthetic.main.item_note.view.*
 
 class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
@@ -18,12 +18,12 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
     lateinit var navController: NavController
     inner class NotesViewHolder( itemView: View ): RecyclerView.ViewHolder( itemView )
 
-    private val differCallback = object : DiffUtil.ItemCallback<Notes>() {
-        override fun areItemsTheSame(oldItem: Notes, newItem: Notes): Boolean {
+    private val differCallback = object : DiffUtil.ItemCallback<Note>() {
+        override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Notes, newItem: Notes): Boolean {
+        override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
             return oldItem.let {
                 it.title == newItem.title && it.description == newItem.description
             }

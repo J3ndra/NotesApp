@@ -9,7 +9,7 @@ import java.util.*
 
 fun getCurrentDate(): String {
     val date = Date()
-    val formatter = SimpleDateFormat("'Created at 'dd-MM-yyyy ', ' HH:mm", Locale.getDefault())
+    val formatter = SimpleDateFormat("dd-MM-yyyy ', ' HH:mm", Locale.getDefault())
 
     return formatter.format(date)
 }

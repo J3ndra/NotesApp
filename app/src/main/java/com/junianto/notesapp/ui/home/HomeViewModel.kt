@@ -1,22 +1,21 @@
 package com.junianto.notesapp.ui.home
 
 import androidx.lifecycle.*
-import com.junianto.notesapp.db.Notes
-import com.junianto.notesapp.db.NotesDB
-import com.junianto.notesapp.repository.NotesRepository
+import com.junianto.notesapp.data.Note
+import com.junianto.notesapp.data.source.repository.NotesRepository
 import kotlinx.coroutines.*
 
 class HomeViewModel(private val notesRepository: NotesRepository): ViewModel() {
-    fun insert(notes: Notes) = viewModelScope.launch {
-        notesRepository.insert(notes)
+    fun insert(note: Note) = viewModelScope.launch {
+        notesRepository.insert(note)
     }
 
-    fun update(notes: Notes) = viewModelScope.launch {
-        notesRepository.update(notes)
+    fun update(note: Note) = viewModelScope.launch {
+        notesRepository.update(note)
     }
 
-    fun delete(notes: Notes) = viewModelScope.launch {
-        notesRepository.delete(notes)
+    fun delete(note: Note) = viewModelScope.launch {
+        notesRepository.delete(note)
     }
 
     fun getAllNotes() = notesRepository.getAllNotes()
